@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SidePanel from './components/sidepanel';
+import SidePanel from './components/sidePanel';
 import ContentPanel from './components/contentPanel';
 import { useGetAllChats, useDeleteChat } from './hooks/useApi';
 import type { Chat } from './common.types';
@@ -12,6 +12,7 @@ function App() {
   const { deleteChat, isPending } = useDeleteChat();
 
   function onChatSelect(chat: Chat) {
+    console.log('chat selected = ', chat);
     setSelectedChat(chat);
   }
 
@@ -21,11 +22,11 @@ function App() {
   }
 
   return (
-    <>
+    <div className="bg-white dark:bg-black w-screen h-screen text-black dark:text-white flex flex-row">
       {(isFetching || isPending ) && <LoadingDialogue />}
       <SidePanel chats={chats} onChatSelect={onChatSelect} onChatDelete={onChatDelete} />
       <ContentPanel selectedChat={selectedChat} />
-    </>
+    </div>
   );
 }
 

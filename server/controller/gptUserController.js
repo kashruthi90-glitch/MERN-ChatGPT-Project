@@ -23,12 +23,12 @@ async function loginUser(req, res) {
 
     // create jwt-token
     const token = await jsonwebtoken.sign({userId: user[0]._id, username: user[0].name}, process.env.JWT_TOKEN_SECRET);
-
+    console.log('token to set ', token)
     // set token as http only cookie
     res.cookie('token', token, {
-        httpOnly: 'true',
+        httpOnly: true,
         secure: false, // allow only for https - set to false as we are using http
-        sameSite: 'strict', // avoid cross site request forgery attack
+        sameSite: 'lax', // avoid cross site request forgery attack
         maxAge: 3600000 // 1hr in millisecond
     });
 

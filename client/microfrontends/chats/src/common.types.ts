@@ -9,5 +9,6 @@ export type Message = {
 export type Chat = {
   _id: string,
   user: string,
-  message: Message[]
+  message: Message[],
+  updatedAt: string
 }

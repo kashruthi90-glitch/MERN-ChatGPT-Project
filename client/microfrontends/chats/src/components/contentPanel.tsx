@@ -41,11 +41,11 @@ export default function ContentPanel({selectedChat}: {selectedChat: Chat | null}
     }
 
     return (
-        <div>
+        <div className="w-full h-full p-2">
             <div>
                 {
-                    chatData.message.map((msg) => {
-                        const date = new Date(msg.updatedAt).toLocaleString();
+                    chatData?.message?.map((msg) => {
+                        // const date = new Date(msg.updatedAt).toLocaleString();
                         return (
                             <div>
                                 <div>
@@ -53,7 +53,7 @@ export default function ContentPanel({selectedChat}: {selectedChat: Chat | null}
                                 </div>
                                 <div>
                                     {msg.content}
-                                    {date}
+                                    {/* {date} */}
                                 </div>
                             </div>
                         );
@@ -61,12 +61,13 @@ export default function ContentPanel({selectedChat}: {selectedChat: Chat | null}
                 }
                 {isPending && <Loading /> }
             </div>
-            <div>
-                <select onChange={handleSelectChange} value={type} >
+            <div className="flex justify-center absolute inset-x-0 bottom-5">
+                <select onChange={handleSelectChange} value={type} className="bg-white dark:bg-gray-500">
                     <option value="text"> Text </option>
                     <option value="image"> Image </option>
                 </select>
-                <input type="text" id="promptInput" name="promptInput" ref={inputRef} />
+                <input type="text" id="promptInput" name="promptInput" ref={inputRef} 
+                className="h-10 w-1/3" />
                 <button onClick={onSubmit}> submit </button>
             </div>
         </div>

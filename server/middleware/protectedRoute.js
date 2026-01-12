@@ -4,8 +4,8 @@ const GptUser = require('../model/gptUserModel');
 async function protectedRoute(req, res, next) {
     const authorization = req.headers.authorization;
     // const token = authorization.split(' ')[1]; // if cookie is sent in the authorisation header
-    const token = req.cookie.token; // if cookie is sent http-only cookie
-
+    const token = req.cookies.token; // if cookie is sent http-only cookie
+    console.log('recieved ', token);
     // validate token
     if (!token) {
         res.status(401).send('unauthorised user');

@@ -12,7 +12,7 @@ const app = express();
 
 // Since token is set as httpOnly cookie, enable credentials in CORS settings else browser will reject the cookies
 app.use(cors({
-    origin: 'http://localhost:5173/',
+    origin: 'http://localhost:5173',
     credentials: true
 }));
 

@@ -3,6 +3,7 @@ const geminiAi = require('../controller/geminiAI');
 
 // get all chats of the user
 async function getAllUserChats(req, res) {
+    console.log('recieved request');
     const { userId } = req;
     const userChats = await ChatModel.find({user: userId}).populate('user', 'name').sort({updatedAt: -1});
     res.json({status: 'success', chats: userChats});
